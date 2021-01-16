@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Threading;
+using System.Diagnostics;
 
 namespace BreakTimer
 {
@@ -10,9 +11,8 @@ namespace BreakTimer
         public event Action<double> TimerTicked;
         public event Action TimerEnded;
 
-        private readonly DispatcherTimer timer;
-
-        private readonly DateTime startTime;
+        private readonly DispatcherTimer dispatcherTimer;
+        private readonly Stopwatch stopwatch;
 
         private readonly double duration;
 
@@ -20,38 +20,42 @@ namespace BreakTimer
         {
             this.duration = duration;
 
-            timer = new DispatcherTimer
+            dispatcherTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(UpdateInterval)
             };
-            timer.Tick += OnTick;
-            timer.Start();
+            dispatcherTimer.Tick += OnTick;
 
-            startTime = DateTime.Now;
+            stopwatch = new Stopwatch();
+
+            dispatcherTimer.Start();
+            stopwatch.Start();
         }
 
         public void Start()
         {
-            timer.Start();
+            stopwatch.Start();
+            dispatcherTimer.Start();
         }
 
         public void Pause()
         {
-            timer.Stop();
+            stopwatch.Stop();
+            dispatcherTimer.Stop();
         }
 
         private void OnTick(object sender, EventArgs e)
         {
-            double timeDif = (DateTime.Now - startTime).TotalSeconds;
+            double elapsedTime = stopwatch.ElapsedMilliseconds / 1000.0;
 
-            if (timeDif >= duration)
+            if (elapsedTime >= duration)
             {
-                timer.Stop();
+                dispatcherTimer.Stop();
                 TimerEnded?.Invoke();
             }
             else
             {
-                TimerTicked?.Invoke(timeDif);
+                TimerTicked?.Invoke(elapsedTime);
             }
         }
     }
