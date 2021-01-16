@@ -21,7 +21,7 @@ namespace BreakTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double BreakTime = 2;
+        private const double TimerDuration = 1200;
 
         private enum TimerState { None, Running, Paused }
 
@@ -58,8 +58,9 @@ namespace BreakTimer
         {
             if (timerState == TimerState.None)
             {
-                timer = new Timer();
-                timer.TimerTicked += UpdateTimer;
+                timer = new Timer(TimerDuration);
+                timer.TimerTicked += OnTimerTicked;
+                timer.TimerEnded += OnTimerEnded;
             }
             else if (timerState == TimerState.Paused)
             {
@@ -90,14 +91,8 @@ namespace BreakTimer
             resetButton.IsEnabled = false;
         }
 
-        private void UpdateTimer(double time)
+        private void OnTimerTicked(double time)
         {
-            if (time >= BreakTime)
-            {
-                OnTimerEnded();
-                return;
-            }
-
             timerLabel.Content = time.ToTimestamp();
         }
 

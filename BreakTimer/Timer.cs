@@ -6,13 +6,18 @@ namespace BreakTimer
     public sealed class Timer
     {
         public event Action<double> TimerTicked;
+        public event Action TimerEnded;
 
         private readonly DispatcherTimer timer;
 
         private readonly DateTime startTime;
 
-        public Timer()
+        private readonly double duration;
+
+        public Timer(double duration)
         {
+            this.duration = duration;
+
             timer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(1f / 60f)
@@ -36,7 +41,15 @@ namespace BreakTimer
         private void OnTick(object sender, EventArgs e)
         {
             double timeDif = (DateTime.Now - startTime).TotalSeconds;
-            TimerTicked?.Invoke(timeDif);
+
+            if (timeDif >= duration)
+            {
+                TimerEnded?.Invoke();
+            }
+            else
+            {
+                TimerTicked?.Invoke(timeDif);
+            }
         }
     }
 }
