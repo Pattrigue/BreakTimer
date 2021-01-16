@@ -5,6 +5,8 @@ namespace BreakTimer
 {
     public sealed class Timer
     {
+        private const double UpdateInterval = 1.0 / 60.0;
+
         public event Action<double> TimerTicked;
         public event Action TimerEnded;
 
@@ -20,7 +22,7 @@ namespace BreakTimer
 
             timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(1f / 60f)
+                Interval = TimeSpan.FromMilliseconds(UpdateInterval)
             };
             timer.Tick += OnTick;
             timer.Start();
@@ -44,6 +46,7 @@ namespace BreakTimer
 
             if (timeDif >= duration)
             {
+                timer.Stop();
                 TimerEnded?.Invoke();
             }
             else
