@@ -96,7 +96,7 @@ namespace BreakTimer
         {
             ResetTimer();
             Activate();
-            new PopupWindow();
+            new TimerEndedPopupWindow();
         }
     }
 }

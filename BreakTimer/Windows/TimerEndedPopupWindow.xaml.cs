@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace BreakTimer
 {
     /// <summary>
-    /// Interaction logic for Popup.xaml
+    /// Interaction logic for TimerEndedPopupWindow.xaml
     /// </summary>
-    public partial class PopupWindow : Window
+    public partial class TimerEndedPopupWindow : Window
     {
-        public PopupWindow()
+        public TimerEndedPopupWindow()
         {
             InitializeComponent();
             Show();
