@@ -68,6 +68,8 @@ namespace BreakTimer
 
         private void ResetTimer()
         {
+            timer.Pause();
+
             timerButton.Content = defaultTimerButtonText;
             timerLabel.Content = "-";
             timerState = TimerState.Stopped;
