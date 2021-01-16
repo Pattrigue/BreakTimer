@@ -23,7 +23,7 @@ namespace BreakTimer
     {
         private const double TimerDuration = 1200;
 
-        private enum TimerState { None, Running, Paused }
+        private enum TimerState { Stopped, Running, Paused }
 
         private Timer timer;
 
@@ -56,7 +56,7 @@ namespace BreakTimer
 
         private void StartTimer()
         {
-            if (timerState == TimerState.None)
+            if (timerState == TimerState.Stopped)
             {
                 timer = new Timer(TimerDuration);
                 timer.TimerTicked += OnTimerTicked;
@@ -85,9 +85,7 @@ namespace BreakTimer
 
             timerButton.Content = defaultTimerButtonText;
             timerLabel.Content = "-";
-            timer.Pause();
-            timer = null;
-            timerState = TimerState.None;
+            timerState = TimerState.Stopped;
             resetButton.IsEnabled = false;
         }
 
@@ -99,7 +97,6 @@ namespace BreakTimer
         private void OnTimerEnded()
         {
             ResetTimer();
-
             Activate();
             new PopupWindow();
         }
