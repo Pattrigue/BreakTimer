@@ -9,6 +9,6 @@
         Title="Break Time!" Height="164" Width="363">
     <Grid>
         <Label Content="Time out! Take a break." HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top"/>
-        <Button Content="OK" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
+        <Button Name="closeButton" Content="OK" IsDefault="True" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Width="84" Click="CloseButton_Click"/>
     </Grid>
 </Window>

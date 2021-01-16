@@ -20,9 +20,12 @@ namespace BreakTimer
         public PopupWindow()
         {
             InitializeComponent();
+            Show();
+            Activate();
+            closeButton.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }

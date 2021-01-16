@@ -21,7 +21,7 @@ namespace BreakTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double BreakTime = 900;
+        private const double BreakTime = 2;
 
         private enum TimerState { None, Running, Paused }
 
@@ -105,10 +105,8 @@ namespace BreakTimer
         {
             ResetTimer();
 
-            PopupWindow popup = new PopupWindow();
-            popup.Show();
-            popup.Activate();
             Activate();
+            new PopupWindow();
         }
     }
 }
