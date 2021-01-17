@@ -10,12 +10,8 @@ namespace BreakTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private enum TimerState { Stopped, Running, Paused }
-
-        private Timer timer;
+        private Timer timer = new Timer();
         private TimerEndedPopupWindow timerEndedPopup;
-
-        private TimerState timerState;
 
         private int timerDuration;
 
@@ -24,12 +20,16 @@ namespace BreakTimer
         public MainWindow()
         {
             InitializeComponent();
+
             defaultTimerButtonText = timerButton.Content.ToString();
+
+            timer.TimerTicked += OnTimerTicked;
+            timer.TimerEnded += OnTimerEnded;
         }
 
         private void TimerButton_Click(object sender, RoutedEventArgs e)
         {
-            if (timerState == TimerState.Running)
+            if (timer.TimerState == TimerState.Running)
             {
                 PauseTimer();
             }
@@ -67,42 +67,30 @@ namespace BreakTimer
                 timerDuration = inputMinutes * 60;
             }
 
-            if (timerState == TimerState.Stopped)
-            {
-                timer = new Timer(timerDuration);
-                timer.TimerTicked += OnTimerTicked;
-                timer.TimerEnded += OnTimerEnded;
-            }
-            else if (timerState == TimerState.Paused)
-            {
-                timer.Start();
-            }
-
             resetButton.IsEnabled = true;
             timerButton.Content = "Pause timer";
-            timerState = TimerState.Running;
+            timer.SetDuration(timerDuration);
+            timer.Start();
         }
 
         private void PauseTimer()
         {
             timer.Pause();
             timerButton.Content = defaultTimerButtonText;
-            timerState = TimerState.Paused;
         }
 
         private void ResetTimer()
         {
-            timer.Pause();
+            timer.Reset();
 
             timerButton.Content = defaultTimerButtonText;
             timerLabel.Content = "-";
-            timerState = TimerState.Stopped;
             resetButton.IsEnabled = false;
         }
 
-        private void OnTimerTicked(double time)
+        private void OnTimerTicked(double timeLeft)
         {
-            timerLabel.Content = time.ToTimestamp();
+            timerLabel.Content = timeLeft.ToTimestamp();
         }
 
         private void OnTimerEnded()

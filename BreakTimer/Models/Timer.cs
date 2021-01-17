@@ -4,9 +4,12 @@ using System.Diagnostics;
 
 namespace BreakTimer
 {
+
     public sealed class Timer
     {
         private const double UpdateInterval = 1.0 / 60.0;
+
+        public TimerState TimerState { get; private set; }
 
         public event Action<double> TimerTicked;
         public event Action TimerEnded;
@@ -14,12 +17,10 @@ namespace BreakTimer
         private readonly DispatcherTimer dispatcherTimer;
         private readonly Stopwatch stopwatch;
 
-        private readonly double duration;
+        private double duration;
 
-        public Timer(double duration)
+        public Timer()
         {
-            this.duration = duration;
-
             dispatcherTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromMilliseconds(UpdateInterval)
@@ -27,21 +28,36 @@ namespace BreakTimer
             dispatcherTimer.Tick += OnTick;
 
             stopwatch = new Stopwatch();
+            TimerState = TimerState.Stopped;
+        }
 
-            dispatcherTimer.Start();
-            stopwatch.Start();
+        public void Reset()
+        {
+            stopwatch.Reset();
+            dispatcherTimer.Stop();
+
+            TimerState = TimerState.Stopped;
+        }
+
+        public void SetDuration(double duration)
+        {
+            this.duration = duration;
         }
 
         public void Start()
         {
             stopwatch.Start();
             dispatcherTimer.Start();
+
+            TimerState = TimerState.Running;
         }
 
         public void Pause()
         {
             stopwatch.Stop();
             dispatcherTimer.Stop();
+
+            TimerState = TimerState.Paused;
         }
 
         private void OnTick(object sender, EventArgs e)
