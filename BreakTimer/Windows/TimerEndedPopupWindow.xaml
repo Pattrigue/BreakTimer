@@ -1,4 +1,11 @@
 ﻿<Window x:Class="BreakTimer.TimerEndedPopupWindow"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,6 +16,6 @@
         Title="Break Time!" Height="164" Width="363">
     <Grid>
         <Label Content="Time out! Take a break." HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top"/>
-        <Button Name="closeButton" Content="OK" IsDefault="True" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Width="84" Click="CloseButton_Click"/>
+        <Button Name="closeButton" Content="OK" IsDefault="True" HorizontalAlignment="Center" Margin="0,68,0,0" VerticalAlignment="Top" Width="84" Click="CloseButton_Click"/>
     </Grid>
 </Window>

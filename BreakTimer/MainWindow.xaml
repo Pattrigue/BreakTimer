@@ -1,4 +1,12 @@
 ﻿<Window x:Class="BreakTimer.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,7 +17,7 @@
         Title="Break Timer" Height="213" Width="400">
     <Grid VerticalAlignment="Center">
         <StackPanel HorizontalAlignment="Center">
-            <Label Name="timerLabel" FontSize="24" Content="-" HorizontalContentAlignment="Center" Width="200" Margin="0,0,0,0"/>
+            <Label Name="timerLabel" FontSize="24" Content="-" HorizontalContentAlignment="Center" Width="200" Margin="0,0,0,10"/>
             <Grid>
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*" />
@@ -22,7 +30,7 @@
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="1" VerticalContentAlignment="Center">Timer (minutes):</Label>
-                <TextBox Grid.Row="1" Grid.Column="2" Name="timeInput" VerticalContentAlignment="Center" MaxLength="3" PreviewTextInput="TimeInput_TextChanged" PreviewKeyDown="TimeInput_KeyDown"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" Name="timeInput" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="3" PreviewTextInput="TimeInput_TextChanged" PreviewKeyDown="TimeInput_KeyDown"></TextBox>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -30,8 +38,8 @@
                     <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Name = "timerButton" Content="Start timer" Height="25" Width="100" Click="TimerButton_Click" Margin="0,0,0,0"/>
-                <Button Grid.Column="2" Name = "resetButton" Content="Reset timer" IsEnabled="False" Height="25" Width="100" Click="ResetButton_Click" Margin="0,0,0,0"/>
+                <Button Name="timerButton" FontSize="12" Content="Start timer" Height="25" Width="100" Click="TimerButton_Click" Margin="0,0,0,0"/>
+                <Button Grid.Column="2" Name="resetButton" FontSize="12" Content="Reset timer" IsEnabled="False" Height="25" Width="100" Click="ResetButton_Click" Margin="0,0,0,0"/>
             </Grid>
         </StackPanel>
     </Grid>

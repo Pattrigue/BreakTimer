@@ -10,13 +10,13 @@ namespace BreakTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double TimerDuration = 1200;
-
         private enum TimerState { Stopped, Running, Paused }
 
         private Timer timer;
 
         private TimerState timerState;
+
+        private int timerDuration;
 
         private readonly string defaultTimerButtonText;
 
@@ -55,13 +55,18 @@ namespace BreakTimer
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+
+            if (int.TryParse(e.Text, out int inputMinutes))
+            {
+                timerDuration = inputMinutes * 60;
+            }
         }
 
         private void StartTimer()
         {
             if (timerState == TimerState.Stopped)
             {
-                timer = new Timer(TimerDuration);
+                timer = new Timer(timerDuration);
                 timer.TimerTicked += OnTimerTicked;
                 timer.TimerEnded += OnTimerEnded;
             }
