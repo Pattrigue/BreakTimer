@@ -56,15 +56,17 @@ namespace BreakTimer
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-
-            if (int.TryParse(e.Text, out int inputMinutes))
-            {
-                timerDuration = inputMinutes * 60;
-            }
         }
 
         private void StartTimer()
         {
+            if (timeInput.Text.Length == 0) return;
+
+            if (int.TryParse(timeInput.Text, out int inputMinutes))
+            {
+                timerDuration = inputMinutes * 60;
+            }
+
             if (timerState == TimerState.Stopped)
             {
                 timer = new Timer(timerDuration);
