@@ -8,7 +8,7 @@ namespace BreakTimer.Extensions
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(time);
 
-            return $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds:000}";
+            return $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
         }
 
         public static string ToTimestamp(this double time, string zeroSymbol)

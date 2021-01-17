@@ -7,7 +7,7 @@ namespace BreakTimer
 
     public sealed class Timer
     {
-        private const double UpdateInterval = 1.0 / 60.0;
+        private const float UpdateInterval = 0.1f;
 
         public TimerState TimerState { get; private set; }
 
@@ -23,7 +23,7 @@ namespace BreakTimer
         {
             dispatcherTimer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(UpdateInterval)
+                Interval = TimeSpan.FromSeconds(UpdateInterval)
             };
             dispatcherTimer.Tick += OnTick;
 
