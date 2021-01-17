@@ -10,7 +10,7 @@ namespace BreakTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Timer timer = new Timer();
+        private readonly Timer timer = new Timer();
         private TimerEndedPopupWindow timerEndedPopup;
 
         private int timerDuration;
