@@ -59,7 +59,7 @@ namespace BreakTimer
 
             if (int.TryParse(e.Text, out int inputMinutes))
             {
-                timerDuration = inputMinutes * 1;
+                timerDuration = inputMinutes * 60;
             }
         }
 
