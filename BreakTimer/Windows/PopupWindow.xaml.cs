@@ -6,13 +6,16 @@ namespace BreakTimer
     /// <summary>
     /// Interaction logic for TimerEndedPopupWindow.xaml
     /// </summary>
-    public partial class TimerEndedPopupWindow : Window
+    public partial class PopupWindow : Window
     {
         public event Action Closed;
 
-        public TimerEndedPopupWindow()
+        public PopupWindow(string titleText, string contentText)
         {
             InitializeComponent();
+            textBlock.Text = contentText;
+            Title = titleText;
+
             Show();
             Activate();
             closeButton.Focus();

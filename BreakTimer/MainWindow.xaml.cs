@@ -11,7 +11,7 @@ namespace BreakTimer
     public partial class MainWindow : Window
     {
         private readonly Timer timer = new Timer();
-        private TimerEndedPopupWindow timerEndedPopup;
+        private PopupWindow timerEndedPopup;
 
         private int timerDuration;
 
@@ -56,6 +56,11 @@ namespace BreakTimer
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            new PopupWindow("About", "This open-source software was developed\nby Pattrigue and may be freely distributed.\n\nSource code can be found on\ngithub.com/Pattrigue/BreakTimer");
         }
 
         private void StartTimer()
@@ -104,7 +109,7 @@ namespace BreakTimer
             Activate();
 
             timerButton.IsEnabled = timeInput.IsEnabled = false;
-            timerEndedPopup = new TimerEndedPopupWindow();
+            timerEndedPopup = new PopupWindow("Break Time!", "Time out!\nTake a break.");
             timerEndedPopup.Closed += OnTimerPopupClosed;
         }
 
