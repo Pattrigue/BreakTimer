@@ -55,7 +55,7 @@ namespace BreakTimer
             }
             else
             {
-                TimerTicked?.Invoke(elapsedTime);
+                TimerTicked?.Invoke(duration - elapsedTime);
             }
         }
     }
