@@ -9,7 +9,7 @@
         Title="Break Timer" Height="213" Width="400">
     <Grid VerticalAlignment="Center">
         <StackPanel HorizontalAlignment="Center">
-            <Label Name="timerLabel" Content="-" HorizontalContentAlignment="Center" Width="200" Margin="0,0,0,0"/>
+            <Label Name="timerLabel" FontSize="24" Content="-" HorizontalContentAlignment="Center" Width="200" Margin="0,0,0,0"/>
             <Grid>
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*" />
