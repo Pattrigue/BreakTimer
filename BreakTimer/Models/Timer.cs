@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 namespace BreakTimer
 {
-
     public sealed class Timer
     {
         private const float UpdateInterval = 0.1f;
