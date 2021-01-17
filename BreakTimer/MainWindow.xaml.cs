@@ -71,8 +71,9 @@ namespace BreakTimer
             resetButton.IsEnabled = true;
 
             timerButton.Content = "Pause timer";
-            timer.SetDuration(timerDuration);
+            timer.SetDuration(timerDuration + 0.99);
             timer.Start();
+            OnTimerTicked(timerDuration);
         }
 
         private void PauseTimer()
