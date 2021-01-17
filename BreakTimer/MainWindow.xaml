@@ -22,7 +22,7 @@
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="1" VerticalContentAlignment="Center">Timer (minutes):</Label>
-                <TextBox Grid.Row="1" Grid.Column="2" Name="timeInput" VerticalContentAlignment="Center" PreviewTextInput="TimeInput_TextChanged" PreviewKeyDown="TimeInput_KeyDown"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" Name="timeInput" VerticalContentAlignment="Center" MaxLength="3" PreviewTextInput="TimeInput_TextChanged" PreviewKeyDown="TimeInput_KeyDown"></TextBox>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
