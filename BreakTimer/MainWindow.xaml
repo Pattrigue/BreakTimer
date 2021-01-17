@@ -6,10 +6,33 @@
         xmlns:local="clr-namespace:BreakTimer"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="Break Timer" Height="213" Width="479">
-    <Grid>
-        <Button Name = "timerButton" Content="Start timer" HorizontalAlignment="Center" Margin="0,77,0,0" VerticalAlignment="Top" Height="25" Width="100" Click="TimerButton_Click"/>
-        <Button Name = "resetButton" Content="Reset timer" IsEnabled="False" HorizontalAlignment="Center" Margin="0,107,0,0" VerticalAlignment="Top" Height="25" Width="100" Click="ResetButton_Click"/>
-        <Label Name="timerLabel" Content="-" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" Width="100"/>
+        Title="Break Timer" Height="213" Width="400">
+    <Grid VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center">
+            <Label Name="timerLabel" Content="-" HorizontalContentAlignment="Center" Width="200" Margin="0,0,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" VerticalContentAlignment="Center">Timer (minutes):</Label>
+                <TextBox Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center"></TextBox>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Name = "timerButton" Content="Start timer" Height="25" Width="100" Click="TimerButton_Click" Margin="0,0,0,0"/>
+                <Button Grid.Column="2" Name = "resetButton" Content="Reset timer" IsEnabled="False" Height="25" Width="100" Click="ResetButton_Click" Margin="0,0,0,0"/>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
