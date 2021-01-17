@@ -67,7 +67,9 @@ namespace BreakTimer
                 timerDuration = inputMinutes * 60;
             }
 
+            timeInput.IsEnabled = false;
             resetButton.IsEnabled = true;
+
             timerButton.Content = "Pause timer";
             timer.SetDuration(timerDuration);
             timer.Start();
@@ -85,7 +87,9 @@ namespace BreakTimer
 
             timerButton.Content = defaultTimerButtonText;
             timerLabel.Content = "-";
+
             resetButton.IsEnabled = false;
+            timeInput.IsEnabled = true;
         }
 
         private void OnTimerTicked(double timeLeft)
