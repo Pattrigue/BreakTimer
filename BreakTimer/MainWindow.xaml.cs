@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Input;
+using System.Windows;
 using BreakTimer.Extensions;
 
 namespace BreakTimer
@@ -39,6 +41,20 @@ namespace BreakTimer
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             ResetTimer();
+        }
+
+        private void TimeInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TimeInput_TextChanged(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void StartTimer()
