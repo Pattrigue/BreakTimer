@@ -108,16 +108,16 @@ namespace BreakTimer
             ResetTimer();
             Activate();
 
-            timerButton.IsEnabled = false;
+            timerButton.IsEnabled = timeInput.IsEnabled = false;
             timerEndedPopup = new TimerEndedPopupWindow();
             timerEndedPopup.Closed += OnTimerPopupClosed;
         }
 
         private void OnTimerPopupClosed()
         {
-            timerButton.IsEnabled = true;
-            timerEndedPopup = null;
+            timerButton.IsEnabled = timeInput.IsEnabled = true;
             timerEndedPopup.Closed -= OnTimerPopupClosed;
+            timerEndedPopup = null;
         }
     }
 }
