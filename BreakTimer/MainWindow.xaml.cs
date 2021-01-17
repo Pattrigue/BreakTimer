@@ -13,6 +13,7 @@ namespace BreakTimer
         private enum TimerState { Stopped, Running, Paused }
 
         private Timer timer;
+        private TimerEndedPopupWindow timerEndedPopup;
 
         private TimerState timerState;
 
@@ -58,7 +59,7 @@ namespace BreakTimer
 
             if (int.TryParse(e.Text, out int inputMinutes))
             {
-                timerDuration = inputMinutes * 60;
+                timerDuration = inputMinutes * 1;
             }
         }
 
@@ -106,7 +107,17 @@ namespace BreakTimer
         {
             ResetTimer();
             Activate();
-            new TimerEndedPopupWindow();
+
+            timerButton.IsEnabled = false;
+            timerEndedPopup = new TimerEndedPopupWindow();
+            timerEndedPopup.Closed += OnTimerPopupClosed;
+        }
+
+        private void OnTimerPopupClosed()
+        {
+            timerButton.IsEnabled = true;
+            timerEndedPopup = null;
+            timerEndedPopup.Closed -= OnTimerPopupClosed;
         }
     }
 }

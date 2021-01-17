@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace BreakTimer
 {
@@ -7,6 +8,8 @@ namespace BreakTimer
     /// </summary>
     public partial class TimerEndedPopupWindow : Window
     {
+        public event Action Closed;
+
         public TimerEndedPopupWindow()
         {
             InitializeComponent();
@@ -17,6 +20,7 @@ namespace BreakTimer
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            Closed?.Invoke();
             Close();
         }
     }
