@@ -102,7 +102,6 @@ namespace BreakTimer
 
         private void OnTimerTicked(double secondsLeft)
         {
-            System.Diagnostics.Trace.WriteLine(secondsLeft);
             timerLabel.Content = ((int)secondsLeft).ToTimestamp();
         }
 
