@@ -1,5 +1,6 @@
 # Break Timer
 Don't forget to take breaks!
+Download: https://github.com/Pattrigue/BreakTimer/raw/master/BreakTimerSetup.msi
 
 ![Image](https://user-images.githubusercontent.com/57709490/104942278-8a0c9d80-59b4-11eb-97de-b0eb6c6268c1.png)
 
