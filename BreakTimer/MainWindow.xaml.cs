@@ -70,7 +70,7 @@ namespace BreakTimer
 
             if (timer.TimerState == TimerState.Stopped && int.TryParse(timeInput.Text, out int inputMinutes))
             {
-                int timerDuration = inputMinutes * 60;
+                double timerDuration = inputMinutes * 60;
                 timer.SetDuration(timerDuration + 0.99);
                 OnTimerTicked(timerDuration);
             }
@@ -100,9 +100,10 @@ namespace BreakTimer
             timeInput.IsEnabled = true;
         }
 
-        private void OnTimerTicked(double timeLeft)
+        private void OnTimerTicked(double secondsLeft)
         {
-            timerLabel.Content = timeLeft.ToTimestamp();
+            System.Diagnostics.Trace.WriteLine(secondsLeft);
+            timerLabel.Content = ((int)secondsLeft).ToTimestamp();
         }
 
         private void OnTimerEnded()
