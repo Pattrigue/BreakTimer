@@ -62,11 +62,7 @@ namespace BreakTimer
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            if (aboutWindow != null)
-            {
-                aboutWindow.Close();
-            }
-
+            aboutWindow?.Close();
             aboutWindow = new AboutWindow();
         }
 
