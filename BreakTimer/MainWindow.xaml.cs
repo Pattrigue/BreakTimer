@@ -15,8 +15,6 @@ namespace BreakTimer
         private Window timeOutWindow;
         private Window aboutWindow;
 
-        private int timerDuration;
-
         private readonly string defaultTimerButtonText;
 
         public MainWindow()
@@ -70,18 +68,19 @@ namespace BreakTimer
         {
             if (timeInput.Text.Length == 0) return;
 
-            if (int.TryParse(timeInput.Text, out int inputMinutes))
+            if (timer.TimerState == TimerState.Stopped && int.TryParse(timeInput.Text, out int inputMinutes))
             {
-                timerDuration = inputMinutes * 60;
+                int timerDuration = inputMinutes * 60;
+                timer.SetDuration(timerDuration + 0.99);
+                OnTimerTicked(timerDuration);
             }
 
             timeInput.IsEnabled = false;
             resetButton.IsEnabled = true;
 
             timerButton.Content = "Pause timer";
-            timer.SetDuration(timerDuration + 0.99);
+
             timer.Start();
-            OnTimerTicked(timerDuration);
         }
 
         private void PauseTimer()
