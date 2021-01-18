@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BreakTimer", "BreakTimer\BreakTimer.csproj", "{6A50845D-79E9-46D6-9FCE-E24F4FF2B64E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "BreakTimer.Setup\BreakTimer.Setup.vdproj", "{FF9CC558-5BE5-482E-9860-2E84E8F9586E}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{FF9CC558-5BE5-482E-9860-2E84E8F9586E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
