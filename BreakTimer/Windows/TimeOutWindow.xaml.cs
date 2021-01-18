@@ -10,6 +10,7 @@ namespace BreakTimer
         public TimeOutWindow()
         {
             InitializeComponent();
+            Topmost = true;
             Show();
             Activate();
             closeButton.Focus();
